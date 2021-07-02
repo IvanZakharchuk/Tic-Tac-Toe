@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "stock-vector-back-to-school-background-doodle-tic-tac-toe-game-pen-and-pencil-vector-seamless-pattern-671642395.jpg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "stock-vector-back-to-school-background-doodle-tic-tac-toe-game-pen-and-pencil-vector-seamless-pattern-671642396.jpg",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "stock-vector-back-to-school-background-doodle-tic-tac-toe-game-pen-and-pencil-vector-seamless-pattern-671642397.jpg",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
