@@ -104,10 +104,9 @@ class GameSecondViewController<RootView>: UIViewController where RootView: GameB
                 && gameState[combination[1]] == gameState[combination[2]]
             {
                 self.gameModel.gameIsActive = false
-                //  поправить дублирование
-                gameState[combination[0]] == 1
-                    ? self.rootView?.updateViewComponents(isNewGame: false, text: GameTexts.crossWin.rawValue)
-                    : self.rootView?.updateViewComponents(isNewGame: false, text: GameTexts.zeroWin.rawValue)
+                
+                let win = gameState[combination[0]] == 1 ? GameTexts.crossWin.rawValue : GameTexts.zeroWin.rawValue
+                self.rootView?.updateViewComponents(isNewGame: false, text: win)
             }
         }
         
