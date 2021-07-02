@@ -29,7 +29,6 @@ class GameBoardView: UIView {
     
     @IBOutlet private var gameField: UIView?
     
-    
     // MARK: -
     // MARK: IBActions
     
@@ -43,16 +42,7 @@ class GameBoardView: UIView {
     @IBAction func playAgainButton(_ sender: UIButton) {
         self.eventHandler?(.startNewGame)
     }
-    
-    // MARK: -
-    // MARK: LifeCycle
-    
-//    private func loadViewFromXib() -> UIView {
-//        let bundle = Bundle(for: type(of: self))
-//        let nib = UINib(nibName: "GameBoardView", bundle: bundle)
-//        return nib.instantiate(withOwner: self, options: nil).first as? UIView ?? GameBoardView()
-//    }
-    
+       
     // MARK: -
     // MARK: Public
     

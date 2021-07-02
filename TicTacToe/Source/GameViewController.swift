@@ -29,8 +29,6 @@ class GameViewController<RootView>: UIViewController where RootView: GameBoardVi
         super.init(nibName: nil, bundle: nil)
     }
     
-   
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -55,30 +53,13 @@ class GameViewController<RootView>: UIViewController where RootView: GameBoardVi
     
     // MARK: -
     // MARK: LifeCycle
-    
-//    override func loadView() {
-//        super.loadView()
-//
-//    }
-    
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//
-//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        loadViewFromXib()
         self.configureGameView()
     }
-//
-//    private func loadViewFromXib() -> UIView {
-//        let bundle = Bundle(for: type(of: self))
-//        let nib = UINib(nibName: "GameBoardView", bundle: bundle)
-//        return nib.instantiate(withOwner: self, options: nil).first as? UIView ?? GameBoardView()
-//    }
-    
+
     // MARK: -
     // MARK: Public
     

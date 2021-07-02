@@ -57,29 +57,12 @@ class GameSecondViewController<RootView>: UIViewController where RootView: GameB
     // MARK: -
     // MARK: LifeCycle
     
-    //    override func loadView() {
-    //        super.loadView()
-    //
-    //    }
-    
-    //    override func awakeFromNib() {
-    //        super.awakeFromNib()
-    //
-    //    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //        loadViewFromXib()
         self.configureGameView()
     }
-    //
-    //    private func loadViewFromXib() -> UIView {
-    //        let bundle = Bundle(for: type(of: self))
-    //        let nib = UINib(nibName: "GameBoardView", bundle: bundle)
-    //        return nib.instantiate(withOwner: self, options: nil).first as? UIView ?? GameBoardView()
-    //    }
-    
+
     // MARK: -
     // MARK: Public
     
@@ -89,35 +72,11 @@ class GameSecondViewController<RootView>: UIViewController where RootView: GameB
         if gameModel.gameState[tag-1] == 0 && gameModel.gameIsActive {
             gameModel.gameState[tag-1] = gameModel.turn.rawValue
             
-//                        gameModel.turn.rawValue == 1 ? self.rootView?.updateView(tag: tag, gameFigure: .cross)
-                        let cross: ()? = self.rootView?.updateView(tag: tag, gameFigure: .cross)
-                        let zero: ()? = self.rootView?.updateView(tag: tag, gameFigure: .zero)
-            
-            //            let cross = self.rootView?.updateView(tag: tag, gameFigure: .cross)
-            //            let zero = self.rootView?.updateView(tag: tag, gameFigure: .zero)
-            //
-            //            if gameModel.turn.rawValue == 1 {
-            //                cross
-            //            } else {
-            //                zero
-            //            }
-            //
-            //            gameModel.turn.rawValue == 1
-            //                ? cross
-            //                : zero
-            //
-            // убрать дублирование
             let turn = gameModel.turn.rawValue == 1 ? GameFigure.cross : .zero
             self.rootView?.updateView(tag: tag, gameFigure: turn)
             
             // как применить тогл
-            
-            gameModel.turn.rawValue == 1
-                ? (self.rootView?.updateView(tag: tag, gameFigure: .cross),
-                   gameModel.turn = .zero) // следуйщий шаг - зиро(2)
-                : (self.rootView?.updateView(tag: tag, gameFigure: .zero),
-                   gameModel.turn = .cross) // следуйщий шаг - хрестик(1)
-            
+        
             self.processCombination()
             print(self.gameModel.gameState)
         }
