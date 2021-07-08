@@ -5,7 +5,6 @@
 //  Created by Іван Захарчук on 01.07.2021.
 //
 
-
 import UIKit
 
 class GameSecondViewController<RootView>: UIViewController where RootView: GameBoardView {
@@ -72,11 +71,9 @@ class GameSecondViewController<RootView>: UIViewController where RootView: GameB
         if gameModel.gameState[tag-1] == 0 && gameModel.gameIsActive {
             gameModel.gameState[tag-1] = gameModel.turn.rawValue
             
+            // как применить тогл
             let turn = gameModel.turn.rawValue == 1 ? GameFigure.cross : .zero
             self.rootView?.updateView(tag: tag, gameFigure: turn)
-            
-            // как применить тогл
-        
             self.processCombination()
             print(self.gameModel.gameState)
         }
@@ -103,10 +100,9 @@ class GameSecondViewController<RootView>: UIViewController where RootView: GameB
                 && gameState[combination[0]] == gameState[combination[1]]
                 && gameState[combination[1]] == gameState[combination[2]]
             {
-                self.gameModel.gameIsActive = false
-                
                 let win = gameState[combination[0]] == 1 ? GameTexts.crossWin.rawValue : GameTexts.zeroWin.rawValue
                 self.rootView?.updateViewComponents(isNewGame: false, text: win)
+                self.gameModel.gameIsActive = false
             }
         }
         

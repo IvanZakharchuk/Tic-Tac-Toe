@@ -15,14 +15,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
-    private var gameViewController: GameSecondViewController<GameBoardView>?
+    private var gameViewController: GameViewController?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let window = UIWindow(frame: UIScreen.main.bounds)
         
         let gameModel = GameElement()
         let constants = Constants()
-        self.gameViewController = GameSecondViewController(gameModel: gameModel, constants: constants)
+        self.gameViewController = GameViewController(gameModel: gameModel, constants: constants)
         window.rootViewController = gameViewController
         window.makeKeyAndVisible()
         self.window = window

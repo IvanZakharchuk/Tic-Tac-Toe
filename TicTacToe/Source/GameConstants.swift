@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum GameFigure: String {
     
@@ -17,9 +18,9 @@ enum GameFigure: String {
         case .cross:
             self = .zero
         case .zero:
-            self =  .cross
+            self = .cross
         }
-
+        
         return self
     }
 }

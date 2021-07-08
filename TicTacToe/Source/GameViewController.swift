@@ -7,12 +7,12 @@
 
 import UIKit
 
-class GameViewController<RootView>: UIViewController where RootView: GameBoardView {
-    
+class GameViewController: RootViewGetable<GameBoardView> {
+        
     // MARK: -
     // MARK: Properties
-
-    public var gameModel: GameElement
+    
+    public var gameModel: GameElement 
     public var constants: Constants
     
     // MARK: -
@@ -56,7 +56,6 @@ class GameViewController<RootView>: UIViewController where RootView: GameBoardVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.configureGameView()
     }
 
@@ -68,31 +67,13 @@ class GameViewController<RootView>: UIViewController where RootView: GameBoardVi
         
         if gameModel.gameState[tag-1] == 0 && gameModel.gameIsActive {
             gameModel.gameState[tag-1] = gameModel.turn.rawValue
-           
-//            gameModel.turn.rawValue == 1 ? self.rootView?.updateView(tag: tag, gameFigure: .cross)
-//            let cross: ()? = self.rootView?.updateView(tag: tag, gameFigure: .cross)
-//            let zero: ()? = self.rootView?.updateView(tag: tag, gameFigure: .zero)
-            
-//            let cross = self.rootView?.updateView(tag: tag, gameFigure: .cross)
-//            let zero = self.rootView?.updateView(tag: tag, gameFigure: .zero)
-//
-//            if gameModel.turn.rawValue == 1 {
-//                cross
-//            } else {
-//                zero
-//            }
-//
-//            gameModel.turn.rawValue == 1
-//                ? cross
-//                : zero
-//
-                // убрать дублирование
-            gameModel.turn.rawValue == 1
-                ? (self.rootView?.updateView(tag: tag, gameFigure: .cross),
-                   gameModel.turn = .zero) // следуйщий шаг - зиро(2)
-                : (self.rootView?.updateView(tag: tag, gameFigure: .zero),
-                   gameModel.turn = .cross) // следуйщий шаг - хрестик(1)
 
+            gameModel.turn.rawValue == 1
+                           ? (self.rootView?.updateView(tag: tag, gameFigure: .cross),
+                              gameModel.turn = .zero) // следуйщий шаг - зиро(2)
+                           : (self.rootView?.updateView(tag: tag, gameFigure: .zero),
+                              gameModel.turn = .cross)
+            
             self.processCombination()
             print(self.gameModel.gameState)
         }
@@ -119,11 +100,9 @@ class GameViewController<RootView>: UIViewController where RootView: GameBoardVi
                 && gameState[combination[0]] == gameState[combination[1]]
                 && gameState[combination[1]] == gameState[combination[2]]
             {
-                self.gameModel.gameIsActive = false
-                //  поправить дублирование
-                gameState[combination[0]] == 1
-                    ? self.rootView?.updateViewComponents(isNewGame: false, text: GameTexts.crossWin.rawValue)
-                    : self.rootView?.updateViewComponents(isNewGame: false, text: GameTexts.zeroWin.rawValue)
+                let win = gameState[combination[0]] == 1 ? GameTexts.crossWin.rawValue : GameTexts.zeroWin.rawValue
+                self.rootView?.updateViewComponents(isNewGame: false, text: win)
+                gameModel.gameIsActive = false
             }
         }
         
@@ -140,11 +119,9 @@ class GameViewController<RootView>: UIViewController where RootView: GameBoardVi
             }
         }
     }
-}
-
-
-extension GameViewController {
-    var rootView: RootView? {
-        return self.view as? RootView
+    
+    let a: Double = 2.0
+    func sum<T: Numeric>(a: T, b: T) -> T {
+        return a + b
     }
 }
