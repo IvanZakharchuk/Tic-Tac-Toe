@@ -54,11 +54,7 @@ class GameBoardView: UIView {
     
     public func startNewGame() {
         self.updateViewComponents(isNewGame: true)
-       
-        
-        self.buttons?.forEach { button in
-            button.setImage(nil, for: .normal)
-        }
+        self.buttons?.forEach { $0.setImage(nil, for: .normal) }
     }
     
     public func updateViewComponents(isNewGame: Bool, text: String = "") {
