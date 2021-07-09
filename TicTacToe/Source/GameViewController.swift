@@ -68,12 +68,9 @@ class GameViewController: RootViewGetable<GameBoardView> {
         if gameModel.gameState[tag-1] == 0 && gameModel.gameIsActive {
             gameModel.gameState[tag-1] = gameModel.turn.rawValue
 
-            gameModel.turn.rawValue == 1
-                           ? (self.rootView?.updateView(tag: tag, gameFigure: .cross),
-                              gameModel.turn = .zero) // следуйщий шаг - зиро(2)
-                           : (self.rootView?.updateView(tag: tag, gameFigure: .zero),
-                              gameModel.turn = .cross)
-            
+            let turn = gameModel.turn.rawValue == 1 ? GameFigure.cross : .zero
+            self.rootView?.updateView(tag: tag, gameFigure: turn)
+            self.gameModel.turn.toggle()
             self.processCombination()
             print(self.gameModel.gameState)
         }

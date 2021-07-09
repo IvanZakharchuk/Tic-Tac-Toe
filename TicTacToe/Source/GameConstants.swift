@@ -12,17 +12,17 @@ enum GameFigure: String {
     
     case cross = "cross"
     case zero = "zero"
-    // почитатиь за мутатинг
-    mutating func toggle() -> GameFigure {
-        switch self {
-        case .cross:
-            self = .zero
-        case .zero:
-            self = .cross
-        }
-        
-        return self
-    }
+//    // почитатиь за мутатинг
+//    mutating func toggle() -> GameFigure {
+//        switch self {
+//        case .cross:
+//            self = .zero
+//        case .zero:
+//            self = .cross
+//        }
+//        
+//        return self
+//    }
 }
 
 enum GameTexts: String {
