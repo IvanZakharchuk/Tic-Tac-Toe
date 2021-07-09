@@ -12,7 +12,17 @@ enum GameState: Int {
     case cross = 1
     case zero = 2
     
-    // сделать тогл 
+    // сделать тогл
+    
+    mutating func toggle() -> GameState {
+        switch self {
+        case .cross:
+            self = .zero
+        case .zero:
+            self = .cross
+        }
+        return self
+    }
 }
 
 class GameElement {

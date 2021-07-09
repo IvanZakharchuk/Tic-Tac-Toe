@@ -13,7 +13,6 @@ protocol RootView: UIViewController {
     associatedtype RootView
     var rootView: RootView? { get }
 }
-
 // протокол который долежн обязывать все  наследуемые контрллеры возврошать рутовое вю указаного дженерик типа
 // associated types in protocol
 // в протоколе два поля асошиетид тайп и рут вю
