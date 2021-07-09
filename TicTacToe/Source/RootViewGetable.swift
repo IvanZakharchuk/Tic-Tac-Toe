@@ -18,14 +18,26 @@ protocol RootView: UIViewController {
 // в протоколе два поля асошиетид тайп и рут вю
 //
 
+extension RootView {
+    func setRootView() -> RootView? {
+        return self.view as? RootView
+    }
+}
+
 class RootViewGetable<View: UIView>: UIViewController, RootView {
     
     typealias RootView = View
     
     var rootView: RootView? {
-        return self.view as? View
+        self.setRootView()
     }
+    
+//    var rootView: RootView? {
+//        return self.view as? View
+//    }
+    
 }
+
 
 //protocol RootView: AnyObject {
 //
