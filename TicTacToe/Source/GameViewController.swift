@@ -116,9 +116,4 @@ class GameViewController: RootViewGetable<GameBoardView> {
             }
         }
     }
-    
-    let a: Double = 2.0
-    func sum<T: Numeric>(a: T, b: T) -> T {
-        return a + b
-    }
 }
