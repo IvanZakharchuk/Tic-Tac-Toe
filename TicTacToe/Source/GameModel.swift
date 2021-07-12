@@ -12,6 +12,7 @@ enum GameState: Int {
     case cross = 1
     case zero = 2
     
+    @discardableResult
     mutating func toggle() -> GameState {
         switch self {
         case .cross:
@@ -20,6 +21,15 @@ enum GameState: Int {
             self = .cross
         }
         return self
+    }
+    
+    func imageName() -> String {
+        switch self {
+        case .cross:
+            return "cross"
+        case .zero:
+            return "zero"
+        }
     }
 }
 

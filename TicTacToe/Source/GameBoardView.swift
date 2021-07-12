@@ -46,8 +46,8 @@ class GameBoardView: UIView {
     // MARK: -
     // MARK: Public
     
-    public func updateView(tag: Int, gameFigure: GameFigure) {
-        let image = UIImage(named: gameFigure.rawValue)
+    public func updateView(tag: Int, gameState: GameState) {
+        let image = UIImage(named: gameState.imageName())
 
         self.buttons?.first { $0.tag == tag }?.setImage(image, for: .normal)
     }
