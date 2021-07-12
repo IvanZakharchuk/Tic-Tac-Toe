@@ -7,12 +7,14 @@
 
 import UIKit
 
-class GameViewController: RootViewGetable<GameBoardView> {
-        
+class GameViewController: UIViewController, RootViewGetable {
+    
+    typealias RootView = GameBoardView
+
     // MARK: -
     // MARK: Properties
     
-    public var gameModel: GameElement 
+    public var gameModel: GameElement
     public var constants: Constants
     
     // MARK: -
@@ -53,7 +55,6 @@ class GameViewController: RootViewGetable<GameBoardView> {
     
     // MARK: -
     // MARK: LifeCycle
-
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureGameView()
@@ -67,15 +68,11 @@ class GameViewController: RootViewGetable<GameBoardView> {
         
         if gameModel.gameState[tag-1] == 0 && gameModel.gameIsActive {
             gameModel.gameState[tag-1] = gameModel.turn.rawValue
-
-            gameModel.turn.rawValue == 1
-                           ? (self.rootView?.updateView(tag: tag, gameFigure: .cross),
-                              gameModel.turn = .zero) // следуйщий шаг - зиро(2)
-                           : (self.rootView?.updateView(tag: tag, gameFigure: .zero),
-                              gameModel.turn = .cross)
             
+            self.rootView?.updateView(tag: tag, gameState: gameModel.turn)
+            gameModel.turn.toggle()
             self.processCombination()
-            print(self.gameModel.gameState)
+            print(gameModel.gameState)
         }
     }
     
@@ -118,10 +115,5 @@ class GameViewController: RootViewGetable<GameBoardView> {
                 self.rootView?.updateViewComponents(isNewGame: false, text: GameTexts.standOff.rawValue)
             }
         }
-    }
-    
-    let a: Double = 2.0
-    func sum<T: Numeric>(a: T, b: T) -> T {
-        return a + b
     }
 }
