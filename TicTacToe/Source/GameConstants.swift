@@ -8,12 +8,6 @@
 import Foundation
 import UIKit
 
-//enum GameFigure: String {
-//
-//    case cross = "cross"
-//    case zero = "zero"
-//}
-
 enum GameTexts: String {
 
     case crossWin = "Cross has won"
