@@ -29,8 +29,6 @@ class GameSecondViewController<RootView>: UIViewController where RootView: GameB
         super.init(nibName: nil, bundle: nil)
     }
     
-    
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -72,10 +70,10 @@ class GameSecondViewController<RootView>: UIViewController where RootView: GameB
             gameModel.gameState[tag-1] = gameModel.turn.rawValue
             
             // как применить тогл
-            let turn = gameModel.turn.rawValue == 1 ? GameFigure.cross : .zero
-            self.rootView?.updateView(tag: tag, gameFigure: turn)
-            self.processCombination()
-            print(self.gameModel.gameState)
+//            let turn = gameModel.turn.rawValue == 1 ? GameFigure.cross : .zero
+//            self.rootView?.updateView(tag: tag, gameFigure: turn)
+//            self.processCombination()
+//            print(self.gameModel.gameState)
         }
     }
     

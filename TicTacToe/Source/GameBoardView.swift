@@ -46,19 +46,15 @@ class GameBoardView: UIView {
     // MARK: -
     // MARK: Public
     
-    public func updateView(tag: Int, gameFigure: GameFigure) {
-        let image = UIImage(named: gameFigure.rawValue)
+    public func updateView(tag: Int, gameState: GameState) {
+        let image = UIImage(named: gameState.imageName())
 
         self.buttons?.first { $0.tag == tag }?.setImage(image, for: .normal)
     }
     
     public func startNewGame() {
         self.updateViewComponents(isNewGame: true)
-       
-        
-        self.buttons?.forEach { button in
-            button.setImage(nil, for: .normal)
-        }
+        self.buttons?.forEach { $0.setImage(nil, for: .normal) }
     }
     
     public func updateViewComponents(isNewGame: Bool, text: String = "") {

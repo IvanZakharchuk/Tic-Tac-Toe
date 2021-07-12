@@ -12,7 +12,25 @@ enum GameState: Int {
     case cross = 1
     case zero = 2
     
-    // сделать тогл 
+    @discardableResult
+    mutating func toggle() -> GameState {
+        switch self {
+        case .cross:
+            self = .zero
+        case .zero:
+            self = .cross
+        }
+        return self
+    }
+    
+    func imageName() -> String {
+        switch self {
+        case .cross:
+            return "cross"
+        case .zero:
+            return "zero"
+        }
+    }
 }
 
 class GameElement {
