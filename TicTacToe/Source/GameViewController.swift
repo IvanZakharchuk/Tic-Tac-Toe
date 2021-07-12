@@ -7,8 +7,10 @@
 
 import UIKit
 
-class GameViewController: RootViewGetable<GameBoardView> {
-        
+class GameViewController: UIViewController, RootViewGetable {
+    
+    typealias RootView = GameBoardView
+
     // MARK: -
     // MARK: Properties
     
@@ -67,12 +69,11 @@ class GameViewController: RootViewGetable<GameBoardView> {
         
         if gameModel.gameState[tag-1] == 0 && gameModel.gameIsActive {
             gameModel.gameState[tag-1] = gameModel.turn.rawValue
-
-            let turn = gameModel.turn.rawValue == 1 ? GameFigure.cross : .zero
-            self.rootView?.updateView(tag: tag, gameFigure: turn)
-            self.gameModel.turn.toggle()
+            
+            self.rootView?.updateView(tag: tag, gameState: gameModel.turn)
+            gameModel.turn.toggle()
             self.processCombination()
-            print(self.gameModel.gameState)
+            print(gameModel.gameState)
         }
     }
     

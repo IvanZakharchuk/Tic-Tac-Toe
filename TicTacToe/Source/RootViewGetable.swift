@@ -8,23 +8,14 @@
 import Foundation
 import UIKit
 
-protocol RootView: UIViewController {
+protocol RootViewGetable {
 
     associatedtype RootView
     var rootView: RootView? { get }
 }
 
-extension RootView {
-    func setRootView() -> RootView? {
-        return self.view as? RootView
-    }
-}
-
-class RootViewGetable<View: UIView>: UIViewController, RootView {
-    
-    typealias RootView = View
-    
+extension RootViewGetable where Self: UIViewController, RootView: UIView {
     var rootView: RootView? {
-        self.setRootView()
+        return self.view as? RootView
     }
 }
