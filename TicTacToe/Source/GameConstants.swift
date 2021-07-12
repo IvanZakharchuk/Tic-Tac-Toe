@@ -8,11 +8,11 @@
 import Foundation
 import UIKit
 
-enum GameFigure: String {
-    
-    case cross = "cross"
-    case zero = "zero"
-}
+//enum GameFigure: String {
+//
+//    case cross = "cross"
+//    case zero = "zero"
+//}
 
 enum GameTexts: String {
 
